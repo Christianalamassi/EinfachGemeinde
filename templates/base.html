@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EinfachGemeinde</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+        EINFACH GEMEINDE
+    </div>
+
+     <div class="mobile-menu" id="mobile-toggle">
+        ☰
+    </div>
+
+    <ul class="nav-links" id="nav-menu">
+        <li><a href="/">HOME</a></li>
+        <li><a href="/pray/">PRAY</a></li>
+        <li><a href="/serve/">SERVE</a></li>
+        <li><a href="/give/">GIVE</a></li>
+        <li><a href="/learn/">LEARN</a></li>
+        <li><a href="/vision/">VISION</a></li>
+    </ul>
+
+</nav>
+
+{% block content %}
+{% endblock %}
+
+{% include 'footer.html' %}
+
+<script>
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    mobileToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="pray-container">
+
+    <div class="pray-left">
+
+        <h2>PRAYER NEWSLETTER</h2>
+
+        <p>
+            Join our prayer network.
+        </p>
+
+        <blockquote>
+            God, bless our city and
+            guide us as we seek You.
+        </blockquote>
+
+    </div>
+
+    <div class="pray-right">
+
+        <h2>
+            SUBSCRIBE
+        </h2>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <input type="email"
+                   placeholder="Email">
+
+            <input type="text"
+                   placeholder="First Name">
+
+            <input type="text"
+                   placeholder="Last Name">
+
+            <button>
+                Subscribe
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}
