@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-_frzh$ci48hec$11@keyf7pz8mm&ho^^mb@ghex1x79n*i05z5
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "christain12345.pythonanywhere.com"
+    "christain12345.pythonanywhere.com",
+    "127.0.0.1"
 ]
 
 
@@ -125,6 +126,10 @@ USE_TZ = True
 
 
 STATIC_URL = "/static/"
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
