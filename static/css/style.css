@@ -441,16 +441,26 @@ blockquote {
    VISION
 ========================================== */
 
+.image-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: 
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* KEY: fits entire image inside */
+  display: block;
+}
+
 .page-hero {
     position: relative;
     height: 340px;
     overflow: hidden;
-}
-
-.page-hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .hero-overlay {
