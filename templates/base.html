@@ -2,51 +2,63 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>EinfachGemeinde</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 
 <body>
 
-<nav class="navbar">
+    <nav class="navbar">
 
-    <div class="logo">
-        EINFACH GEMEINDE
-    </div>
+        <div class="logo">
+            EINFACHGEMEINDE
+        </div>
 
-     <div class="mobile-menu" id="mobile-toggle">
-        ☰
-    </div>
+        <div class="mobile-menu" id="mobile-toggle">
+            ☰
+        </div>
 
-    <ul class="nav-links" id="nav-menu">
-        <li><a href="/">HOME</a></li>
-        <li><a href="/pray/">PRAY</a></li>
-        <li><a href="/serve/">SERVE</a></li>
-        <li><a href="/give/">GIVE</a></li>
-        <li><a href="/learn/">LEARN</a></li>
-        <li><a href="/vision/">VISION</a></li>
-    </ul>
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="/">HOME</a></li>
+            <li><a href="/pray/">PRAY</a></li>
+            <!-- <li><a href="/serve/">SERVE</a></li> -->
+            <!-- <li><a href="/give/">GIVE</a></li> -->
+            <li><a href="/vision/">VISION</a></li>
+            <!-- Language Button / Toggle -->
+            <li class="lang-dropdown">
+                <button class="lang-dropbtn" aria-label="Select Language">
+                    🌐 <span class="current-lang">EN</span>
+                </button>
 
-</nav>
+                <div class="lang-dropdown-content">
+                    <a href="/" class="active">English (EN)</a>
+                    <a href="/#/">Deutsch (DE)</a>
+                    <a href="/#/">العربية (AR)</a>
+                </div>
+            </li>
+        </ul>
 
-{% block content %}
-{% endblock %}
+    </nav>
 
-{% include 'footer.html' %}
+    {% block content %}
+    {% endblock %}
 
-<script>
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const navMenu = document.getElementById('nav-menu');
+    {% include 'footer.html' %}
 
-    mobileToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-    });
-</script>
+    <script>
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
 
 </body>
+
 </html>

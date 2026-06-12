@@ -6,14 +6,15 @@
 
     <div class="pray-left">
 
-        <h2>PRAYER NEWSLETTER</h2>
+        <h2>PRAYER</h2>
 
         <p>
-            Join our prayer network.
+            Please let us know if God may be leading you to participate or
+            start a simple church by filing out the form so we contact you.
         </p>
 
         <blockquote>
-            God, bless our city and
+            God, bless Berlin and
             guide us as we seek You.
         </blockquote>
 
@@ -22,30 +23,52 @@
     <div class="pray-right">
 
         <h2>
-            SUBSCRIBE
+            Form
         </h2>
 
+        {% if messages %}
+        <div id="flash-message" class="flash-message">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
         <form method="post">
-
             {% csrf_token %}
-
-            <input type="email"
-                   placeholder="Email">
-
-            <input type="text"
-                   placeholder="First Name">
-
-            <input type="text"
-                   placeholder="Last Name">
-
-            <button>
-                Subscribe
-            </button>
-
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+            <button type="submit">Send</button>
         </form>
 
     </div>
 
 </section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const msg = document.getElementById("flash-message");
+
+    if (msg) {
+        // Fade in
+        setTimeout(() => {
+            msg.classList.add("show");
+        }, 100);
+
+        // Fade out after 10 seconds
+        setTimeout(() => {
+            msg.classList.add("hide");
+        }, 8000);
+
+        // Remove from DOM after fade-out
+        setTimeout(() => {
+            msg.remove();
+        }, 9000);
+    }
+});
+</script>
 
 {% endblock %}
