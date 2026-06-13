@@ -31,3 +31,4 @@ rad.json
 TestResults.xml
 d8d7ab320490ad4a6b8b92b9bb8b35d9e393832d
 staticfiles/
+.env
