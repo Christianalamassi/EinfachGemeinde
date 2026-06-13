@@ -49,3 +49,8 @@ def learn(request):
 
 def vision(request):
     return render(request, 'vision.html')
+
+
+def error_404_view(request, exception):
+    # This points to wherever your 404 html file is
+    return render(request, '404.html', status=404)

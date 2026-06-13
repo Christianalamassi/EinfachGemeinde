@@ -22,3 +22,5 @@ urlpatterns = [
 
     path('', include('website.urls')),
 ]
+
+handler404 = 'website.views.error_404_view'
