@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import Pray
+from django.contrib.auth.models import User
 
 
 def home(request):
