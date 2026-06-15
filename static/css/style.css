@@ -98,6 +98,13 @@ Language button
     font-family: inherit; 
 }
 
+.globe-icon {
+    /* Inverts colors and forces maximum brightness to turn the emoji entirely white */
+    filter: invert(1) brightness(100);
+    display: inline-block;
+    vertical-align: middle;
+}
+
 /* The Dropdown Menu (Hidden by default) */
 .lang-dropdown-content {
     display: none;
