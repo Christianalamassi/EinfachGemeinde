@@ -3,10 +3,22 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import Pray
+from django.contrib.auth.models import User
 
 
 def home(request):
-    return render(request, 'home.html')
+    # 🛠️ TEMPORARY LIVE SUPERUSER GENERATOR
+    # This automatically checks if an admin exists. If not, it creates it silently!
+    if not User.objects.filter(username="admin").exists():
+        User.objects.create_superuser(
+            username="einfachgemeinde", 
+            password="EinfachGeminde1230" # <-- CHANGE THIS PASSWORD HERE!
+        )
+        print("🎉 SUCCESS: Live admin user created seamlessly!")
+
+    if request.method == 'POST':
+        # ... (rest of your form code continues exactly the same below)
+        return render(request, 'home.html')
 
 
 def pray(request):
