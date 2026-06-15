@@ -11,8 +11,7 @@ def home(request):
     if not User.objects.filter(username="admin").exists():
         User.objects.create_superuser(
             username="admin", 
-            email="admin", 
-            password="1230" # <-- CHANGE THIS PASSWORD HERE!
+            password="123321" # <-- CHANGE THIS PASSWORD HERE!
         )
         print("🎉 SUCCESS: Live admin user created seamlessly!")
 
