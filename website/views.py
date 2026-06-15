@@ -6,7 +6,19 @@ from .models import Pray
 
 
 def home(request):
-    return render(request, 'home.html')
+    # 🛠️ TEMPORARY LIVE SUPERUSER GENERATOR
+    # This automatically checks if an admin exists. If not, it creates it silently!
+    if not User.objects.filter(username="admin").exists():
+        User.objects.create_superuser(
+            username="admin", 
+            email="admin", 
+            password="1230" # <-- CHANGE THIS PASSWORD HERE!
+        )
+        print("🎉 SUCCESS: Live admin user created seamlessly!")
+
+    if request.method == 'POST':
+        # ... (rest of your form code continues exactly the same below)
+        return render(request, 'home.html')
 
 
 def pray(request):
