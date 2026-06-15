@@ -5,9 +5,7 @@
 <section class="pray-container">
 
     <div class="pray-left">
-
         <h2>PRAYER</h2>
-
         <p>
             Please let us know if God may be leading you to participate or
             start a simple church by filing out the form so we contact you.
@@ -17,14 +15,10 @@
             God, bless Berlin and
             guide us as we seek You.
         </blockquote>
-
     </div>
 
     <div class="pray-right">
-
-        <h2>
-            Form
-        </h2>
+        <h2>Form</h2>
 
         {% if messages %}
         <div id="flash-message" class="flash-message">
@@ -38,37 +32,59 @@
 
         <form method="post">
             {% csrf_token %}
-            <input type="email" name="email" placeholder="Email" required>
             <input type="text" name="first_name" placeholder="First Name" required>
             <input type="text" name="last_name" placeholder="Last Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+
+            <!-- Optional Phone Field -->
+            <input type="tel" name="phone" placeholder="Phone Number (Optional)">
+
+            <!-- Context Prompt for Textarea -->
+            <div class="textarea-prompt"
+                style="margin: 20px 0 10px; font-size: 0.95rem; line-height: 1.5; color: #555;">
+                <p>Please speak with God about how He would have you be involved with us to see an EinfachGemeinde on
+                    every block of Berlin.</p>
+                <p><strong>Feel free to utilize this form to let us know...</strong></p>
+                <ol style="padding-left: 20px; margin: 10px 0;">
+                    <li>...how the Lord is leading you to pray toward this goal!</li>
+                    <li>...if the Lord is leading you to possibly partner with us in some way so that we can also pray
+                        with you about the possibility.</li>
+                    <li>...if you would like us to contact you about any future EinfachGemeinde trainings.</li>
+                    <li>...to find out more about what we believe and how we pray these ideas will grow and go.</li>
+                </ol>
+            </div>
+
+            <!-- Single Textarea Field -->
+            <textarea name="message" rows="6" placeholder="Your thoughts, prayers, or partnership ideas... (Optional)"
+                style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; font-family: inherit; margin-bottom: 20px; resize: vertical;"></textarea>
+
             <button type="submit">Send</button>
         </form>
-
     </div>
 
 </section>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const msg = document.getElementById("flash-message");
+    document.addEventListener("DOMContentLoaded", function () {
+        const msg = document.getElementById("flash-message");
 
-    if (msg) {
-        // Fade in
-        setTimeout(() => {
-            msg.classList.add("show");
-        }, 100);
+        if (msg) {
+            // Fade in
+            setTimeout(() => {
+                msg.classList.add("show");
+            }, 100);
 
-        // Fade out after 10 seconds
-        setTimeout(() => {
-            msg.classList.add("hide");
-        }, 8000);
+            // Fade out after 8 seconds
+            setTimeout(() => {
+                msg.classList.add("hide");
+            }, 8000);
 
-        // Remove from DOM after fade-out
-        setTimeout(() => {
-            msg.remove();
-        }, 9000);
-    }
-});
+            // Remove from DOM after fade-out
+            setTimeout(() => {
+                msg.remove();
+            }, 9000);
+        }
+    });
 </script>
 
 {% endblock %}

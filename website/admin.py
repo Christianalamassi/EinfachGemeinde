@@ -1,15 +1,16 @@
 from django.contrib import admin
 from .models import Pray
 
-# Register your models here.
 @admin.register(Pray)
-
 class PrayAdmin(admin.ModelAdmin):
-    # Columns to display in the admin list view
-    list_display = ('first_name', 'last_name', 'email', 'created_at')
+    # Added 'phone' to the main table view
+    list_display = ('first_name', 'last_name', 'created_at')
     
-    # Adds a search bar for these fields
-    search_fields = ('email', 'first_name', 'last_name')
+    # Added 'phone' and 'message' so you can search by the user's content
+    search_fields = ('email', 'first_name', 'last_name', 'phone', 'message')
     
-    # Adds a filter sidebar on the right
+    # Keeps date filtering and adds ability to see messages in the detail view
     list_filter = ('created_at',)
+    
+    # Optional: Makes the form cleaner in the admin edit page
+    readonly_fields = ('created_at',)

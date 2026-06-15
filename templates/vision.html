@@ -18,8 +18,7 @@
     .page-hero {
         position: relative;
         width: 100%;
-        height: 45vh;
-        min-height: 300px;
+        height: 400px;
         overflow: hidden;
     }
 
@@ -33,89 +32,57 @@
         height: 100%;
         object-fit: cover;
         object-position: center;
+        display: block;
     }
 
     .hero-overlay {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
+        inset: 0;
+        background: rgba(0, 0, 0, 0.15);
     }
 
-    /* Layout Container */
+    /* Layout Container (Creates the indentation from the left) */
     .content-layout {
         max-width: var(--max-width);
-        margin: 3rem auto;
-        padding: 0 1.5rem;
+        margin: 70px auto;
+        padding: 0 30px;
         display: grid;
-        grid-template-columns: 280px 1fr;
-        gap: 3.5rem;
+        grid-template-columns: 240px 1fr;
+        /* The 240px acts as your multi-inch gap/sidebar space */
+        gap: 60px;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         color: var(--text-color);
         line-height: 1.6;
     }
 
-    /* Sidebar Navigation */
+    /* Sidebar Navigation Area */
     .side-nav {
+        padding-top: 10px;
         position: sticky;
         top: 2rem;
         height: fit-content;
     }
 
-    .side-nav h3 {
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: var(--light-text);
-        margin-bottom: 1rem;
-        border-bottom: 2px solid var(--border-color);
-        padding-bottom: 0.5rem;
-    }
-
-    .side-nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .resource-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .resource-links .label {
-        font-size: 0.85rem;
-        color: var(--light-text);
-        font-weight: 500;
-    }
-
-    .resource-links a {
-        color: var(--accent-color);
-        text-decoration: none;
-        font-size: 0.9rem;
-        word-break: break-all;
-        transition: color 0.2s ease;
-    }
-
-    .resource-links a:hover {
-        color: #217dbb;
-        text-decoration: underline;
-    }
-
     /* Main Article Content */
+    .article-content {
+        max-width: 740px;
+    }
+
     .article-content h2 {
         font-size: 2.25rem;
         color: var(--primary-color);
         margin-top: 0;
         margin-bottom: 1.5rem;
         font-weight: 700;
+        letter-spacing: 1px;
     }
 
-    .article-content h2:not(:first-of-type) {
-        margin-top: 3rem;
+    .article-content h3 {
+        color: #2f6d6d;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-top: 2.5rem;
+        margin-bottom: 1.2rem;
     }
 
     .doc-lead {
@@ -125,9 +92,63 @@
         margin-bottom: 1.5rem;
     }
 
-    .doc-text p {
-        margin-bottom: 1.5rem;
+    .article-content p {
+        color: #444444;
+        line-height: 2;
+        margin-bottom: 25px;
         font-size: 1.05rem;
+    }
+
+    /* Links & Resources */
+    .resource-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+    }
+
+    .resource-links a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.2s ease;
+    }
+
+    .resource-links a:hover {
+        color: #217dbb;
+        text-decoration: underline;
+    }
+
+    /* Multilingual Section Text Styles */
+    .intro-text {
+        font-size: 1.05rem;
+        line-height: 2;
+        color: #444444;
+        margin-bottom: 20px;
+    }
+
+    .underline {
+        text-decoration: underline;
+    }
+
+    .bold-text {
+        font-weight: bold;
+    }
+
+    .article-content ul {
+        padding-left: 20px;
+        margin-bottom: 25px;
+    }
+
+    .article-content li {
+        margin-bottom: 12px;
+        color: #444444;
+        line-height: 1.7;
+    }
+
+    .article-content li a {
+        color: var(--accent-color);
+        text-decoration: underline;
     }
 
     /* Scripture Blockquote */
@@ -147,11 +168,11 @@
         margin-right: 0.2rem;
     }
 
-    hr {
-        border: 0;
-        height: 1px;
-        background: var(--border-color);
-        margin: 3rem 0;
+    /* Divider */
+    .article-content hr {
+        border: none;
+        border-top: 1px solid #ddd;
+        margin: 60px 0;
     }
 
     /* Responsive Design */
@@ -160,14 +181,12 @@
             grid-template-columns: 1fr;
             gap: 2rem;
             margin: 1.5rem auto;
+            padding: 0 20px;
         }
 
         .side-nav {
-            position: relative;
-            top: 0;
-            background: var(--bg-light);
-            padding: 1.5rem;
-            border-radius: 8px;
+            display: none;
+            /* Hides the empty space on small screens */
         }
 
         .page-hero {
@@ -181,49 +200,31 @@
 </style>
 
 <section class="page-hero">
-
     <div class="image-wrapper">
         <picture>
             <source media="(max-width: 900px)" srcset="{% static 'images/vision2.png' %}">
             <img src="{% static 'images/vision.png' %}" alt="Berlin map with Text">
         </picture>
-        
     </div>
-
     <div class="hero-overlay"></div>
-
 </section>
 
 <section class="content-layout">
 
-    <aside class="side-nav">
-
-        <h3>
-            An EinfachGemeinde Vision
-        </h3>
-
-        <ul>
-
-            <li class="active">
-                <div class="resource-links">
-                    <span class="label">Recommended Materials:</span>
-                    <a href="https://simplechurchalliance.com/" target="_blank">Simple Church Alliance Website</a>
-                    <a href="https://www.urbanplaybox.com/did-we-mention-an-urban-vision" target="_blank">Urban Playbox
-                        Vision Document</a>
-                </div>
-            </li>
-        </ul>
-
-    </aside>
+    <aside class="side-nav"></aside>
 
     <article class="article-content">
 
-        <h2>
-            EinfachGemeinde
-        </h2>
+        <h2>VISION</h2>
+
+        <p>
+            “On every block in Berlin, a simple church community is emerging—one that promotes the peace and
+            well‑being of the block through regular acts of service (sharing God’s love) and celebrating together.”
+        </p>
+
+        <h3>EinfachGemeinde</h3>
 
         <div class="doc-content-layout">
-            <!-- Text Column -->
             <div class="doc-text">
                 <p class="doc-lead">
                     A simple church on every block of Berlin – a group of people committed to
@@ -249,7 +250,7 @@
                     enjoying the favor of all the people. And the Lord added to their
                     number daily those who were being saved.
                 </blockquote>
-                <br>
+
                 <p>
                     We will actively pray for the Lord to raise up a simple church on every block of Berlin
                     that would be described as a group of people committed to the good and peace of the city
@@ -257,36 +258,49 @@
                     God in Christ together.
                 </p>
             </div>
+        </div>
 
-            <!-- <div class="vision-buttons">
+        <h3>Resources from others about Simple Church Networks</h3>
 
-                <a href="#">
-                    LIFE HOUSE
-                </a>
+        <ul>
+            <li>
+                <div class="resource-links">
+                    <a href="https://www.einfache-gemeinde.de/" target="_blank">Einfach-gemeinde</a>
+                    <a href="https://simplechurchalliance.com/" target="_blank">Simple Church Alliance Website</a>
+                    <a href="https://www.urbanplaybox.com/did-we-mention-an-urban-vision" target="_blank">Urban Playbox
+                        Vision Document</a>
+                </div>
+            </li>
+        </ul>
 
-                <a href="#">
-                    NEIGHBORHOOD SHEPHERD
-                </a>
+        <hr>
 
-                <a href="#">
-                    COMMUNITY CONGREGATIONS
-                </a>
+        <h3>Resources for Multilingual Simple Churches</h3>
+        
+        <div class="intro-text">
+            <span class="underline">Resources for ongoing discipling of <span class="bold-text">multilingual</span> faith
+                    communities</span>. These sites give us the ability to sometimes simultaneously show multiple
+                languages and other times click between multiple languages.
+        </div>
 
-            </div> -->
-
-            <hr>
-
-            <h2>
-                VISION
-            </h2>
-
-            <p>
-                “On every block in Berlin, a simple church community is emerging—one that promotes the peace and
-                well‑being of the block through regular acts of service (sharing God’s love) and celebrating together.”
-            </p>
+        <ul>
+            <li><a href="https://thebible.org/gt/index">The Parallel Plus Bible</a>. Creating an account and logging in allows us to save our
+                preferred layouts and preferred languages</li>
+            <li><a href="https://www.dbsguide.org/">Discovery Bible Study</a>. This site gives us a simple small group liturgy (small group
+                order of a meeting) that reflects a healthy upward-inward-outward mindset. Its regular use trains
+                participants in what to expect from a faith community gathered.</li>
+            <li><a href="https://bibleproject.com/languages/">The Bible Project</a> provides multilingual videos that summarize Bible books, summarize
+                original language word studies, and Bible theme video overviews</li>
+            <li><a href="https://lumoproject.com/#partners-regions">The Lumo Project</a> gives us access to videos of the gospels for discipling non-readers
+                through the Matthew, Mark, Luke, John, and Acts (click on the map to see videos in languages of that
+                country)</li>
+            <li><a href="https://zume.training/about">Zume Training</a> has a simple but comprehensive training system for training leaders and
+                planting churches</li>
+            <li><a href="https://allnations.international/pocketguide-to-church-planting">Pocket Guide to Church Planting</a> provides PDFs in many languages that step the reader
+                through a simple church planting tool to help people plant churches in a decentralized way.</li>
+        </ul>
 
     </article>
-
 </section>
 
 {% endblock %}

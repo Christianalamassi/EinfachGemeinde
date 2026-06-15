@@ -129,3 +129,12 @@ STATICFILES_STORAGE = (
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+
+# ==============================================================================
+# EMAIL CONFIGURATION
+# ==============================================================================
+# This setup checks your .env file for configuration first. 
+# If nothing is specified there, it seamlessly defaults to the safe testing console.
+EMAIL_BACKEND = env('EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='noreply@einfachgemeinde.berlin')
